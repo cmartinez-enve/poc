@@ -7,10 +7,14 @@ namespace Test
     {
         public static void Main(string[] args)
         {
+            // Data from request
             var alpha = args[0];
             var code = args[1];
+
+            // template name
             var templateName = args[2];
 
+            // context for calculable data
             var context = new Context
             {
                 data = new Data
@@ -20,18 +24,20 @@ namespace Test
                 }
             };
 
-            var templateContext = new Dictionary<string, object>();
+            // context for template evaluation
+            var templateContext = new Dictionary<string, object>
+            {
+                ["data"] = context.data,
+                ["data1"] = new CalculableData1(context),
+                ["data2"] = new CalculableData2(context)
+            };
 
-            templateContext["data"] = context.data;
-            templateContext["data1"] = new CalculableData1(context);
-            templateContext["data2"] = new CalculableData2(context);
-
-            var result = evalTemplate(templateContext, templateName);
+            var result = EvalTemplate(templateContext, templateName);
 
             Console.WriteLine(result);
         }
 
-        private static string evalTemplate(Dictionary<string, object> templateContext, string templateName)
+        private static string EvalTemplate(Dictionary<string, object> templateContext, string templateName)
         {
             string templateSource;
             switch (templateName)
