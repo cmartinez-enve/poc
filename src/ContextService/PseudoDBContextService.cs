@@ -24,10 +24,10 @@ namespace Test.ContextService
 
             if (cache == null)
             {
-                // throw exception?
-                throw new Exception("Invalid property");
+                throw new Exception($"No data for {id}");
             }
 
+            // maps enum to values
             object value = prop switch
             {
                 PropertyEnum.DB_PROPERTY1 => cache.DBProperty1,

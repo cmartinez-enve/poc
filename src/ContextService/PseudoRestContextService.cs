@@ -5,9 +5,9 @@ namespace Test.ContextService
 {
     public class PseudoRestContextService : IContextService
     {
-        private Context context;
+        private readonly Context context;
 
-        private PseudoRestService internalService;
+        private readonly PseudoRestService internalService;
 
         private RestData cache;
 
@@ -23,10 +23,10 @@ namespace Test.ContextService
 
             if (cache == null)
             {
-                // throw exception?
-                throw new Exception("invalid data");
+                throw new Exception($"No data for: {context.data.PropertyAlpha}");
             }
 
+            // maps enum to values
             object value = prop switch
             {
                 PropertyEnum.ID => cache.Id,

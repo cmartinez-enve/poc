@@ -12,10 +12,11 @@ namespace Test
 
         public Context()
         {
+            // services required to calculate properties
             var dbContextService = new PseudoDBContextService(this);
-
             var restContextService = new PseudoRestContextService(this);
 
+            // maps enum to services
             this.properties = new Dictionary<PropertyEnum, IContextService>
             {
                 [PropertyEnum.DB_PROPERTY1] = dbContextService,

@@ -1,0 +1,2 @@
+## Internal services
+These classes simulate Sumday services like Database access, rest services, web services (supas for example). They do not have any restrictions on their response
