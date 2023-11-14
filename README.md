@@ -28,3 +28,5 @@ A context is generated with all the available variables, when required the varia
 - Hability to generate an exception when a variable is undefined (most cases)
 - Have the possibility of knowing which variables are used in each template
 
+## Disadvantages
+- Execution of at least 2 function instead of get the value directly
